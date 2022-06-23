@@ -6,7 +6,7 @@
 1. Install all the dependencies by running `pip install -r requirement.txt`
 
 ## Running the application
-Go to the directory '/bmo_project', make sure you can see the `main.py` on the same directory:\
+Make sure you can see the `main.py` on the same directory:\
 `set FLASK_APP=main.py`\
 `flask run`
 
