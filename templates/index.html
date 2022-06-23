@@ -1,0 +1,61 @@
+
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<body>
+
+<h1>Please choose the start date and end date!</h1>
+
+<form  action="", method="post">
+<label for="startDate">Start Date:</label>
+<input type="date" id="startDate" name="sDate" placeholder="startDate">
+<label for="endDate">End Date:</label>
+<input type="date" id="endDate" name="eDate" placeholder="endDate", max="<?= date('Y-m-d'); ?>">
+<button type="button" id= 'post-btn'>Submit</button>
+
+
+<br></br>
+<div id="output"></div>
+
+<br></br>
+<a id='search'></a>
+<script type="text/javascript">
+  function getData(value1,value2){
+
+    let url = `http://127.0.0.1:5000/get_result?start_date=${value1}&end_date=${value2}`;
+    return fetch(url)
+    .then((response) => response.json())
+    .then((responseData) => {
+      return responseData;
+    })
+  }
+
+  let start_date = document.getElementById("startDate").value;
+  let end_date = document.getElementById("endDate").value;
+
+  let btn = document.getElementById("post-btn");
+
+  btn.addEventListener('click', event => {
+    let url = `http://127.0.0.1:5000/get_result?start_date=${start_date}&end_date=${end_date}`;
+    fetch(url)
+    .then((response) => response.json())
+    .then((responseData) => {
+      document.getElementById("output").innerHTML = `Result:\n ${JSON.stringify(responseData)}`;
+      return responseData;
+    })
+  });
+
+  btn.addEventListener('click', event => {
+      document.getElementById("post-btn").style.display = "none";
+      var button = document.createElement('button');
+      button.innerHTML = 'Try again';
+      button.onclick = function(){
+        history.go(0)
+      };
+      document.body.appendChild(button);
+    });
+
+</script>
+
+
+</body>
+</html>
