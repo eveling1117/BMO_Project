@@ -11,4 +11,4 @@ Go to the directory '/bmo_project', make sure you can see the `main.py` on the s
 `flask run`
 
 ## Rendering HTML
-Open the `templates/index.html` on browser.
+Make sure the application is up and running, then open the `templates/index.html` on browser.
